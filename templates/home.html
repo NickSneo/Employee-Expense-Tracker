@@ -10,8 +10,9 @@
     {% else %}
     <form action="{% url 'home' %}" method="POST">
         {% csrf_token %}
-        <input type="Submit" name="register" value="register">  
-        <input type="Submit" name="viewExpenses" value="viewExpenses">
+        <input type="Submit" name="action" value="registerEmp"> 
+        <input type="Submit" name="action" value="inputExpense">
+        <input type="Submit" name="action" value="viewExpenses">
     </form>
     {% endif %}
 </div>

@@ -1,0 +1,48 @@
+{% extends 'nav.html' %}
+
+{% block content %}
+
+<div class="container">
+    
+    {% if EmpId %}
+        <div class="row">
+            <div class="col">{{ EmpName }}</div>
+            <div class="col">{{ EmpId }}</div>
+        </div>
+    {% else %}        
+        <form action="{% url 'registerEmp' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="EmpName">Employee Name</label>
+                    <input type="text" class="form-control" name="EmpName" id="EmpName" placeholder="Employee Name">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="EmpId">Employee ID</label>
+                    <input type="number" class="form-control" name="EmpId" id="EmpId" placeholder="Employee ID">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="Dept">Employee Department</label>
+                    <select name="Dept" id="Dept" class="form-control">
+                        <option selected>HR</option>
+                        <option>Tech</option>
+                        <option>Finance</option>
+                        <option>Marketing</option>
+                        <option>Production</option>
+                        <option>Stratergy</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="Salary">Employee's Monthly Salary</label>
+                    <input type="number" class="form-control" name="Salary" id="Salary">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    {% endif %}
+        
+    
+</div>
+{% endblock %}
