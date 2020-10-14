@@ -31,9 +31,9 @@ def loginUser(request):
 def home(request):
     if request.method == 'POST':
         if request.POST['action'] == 'registerEmp':
-            return render(request, "registerEmp.html")
+            return redirect(registerEmp)
         elif request.POST['action'] == 'inputExpense':
-            return render(request, "inputExpense.html")
+            return redirect(inputExpense)
         else:
             return render(request, "viewExpenses.html")
     else:
@@ -72,10 +72,11 @@ def inputExpense(request):
         Amt = request.POST['Amt']
         # print(EmpId, EmpName, Dept, Salary)
         if EmpId and Tag and Amt:
+            Emp = Employee.objects.get(EmpId=EmpId)
             newExpense = Expenses(
-                EmpId=EmpId,
-                Tag=Tag,
-                Amt=Amt
+                EmpId=Emp,
+                Tags=Tag,
+                Amount=Amt
             )
             newExpense.save()
             return redirect("/")
@@ -85,6 +86,7 @@ def inputExpense(request):
     empIds = []
     for e in employees:
         empIds.append(e.EmpId)
+    print(empIds)
     return render(request, "inputExpense.html", {"empIds": empIds})
 
 

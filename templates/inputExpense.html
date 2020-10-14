@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    {% if empIds %}
+    {% if not empIds %}
     <h1>No Employees in database, Please add some</h1>
     {% else %}
     <form action="{% url 'inputExpense' %}" method="POST">
@@ -13,7 +13,7 @@
             <div class="form-group col-md-12">
                 <label for="EmpId">Select Employee ID</label>
                 <select name="EmpId" id="EmpId" class="form-control">
-                    <option selected>select from the dropdown</option>
+                    <!-- <option selected>select from the dropdown</option> -->
                     {% for e in empIds %}
                         <option>{{ e }}</option>
                     {% endfor %}                    
