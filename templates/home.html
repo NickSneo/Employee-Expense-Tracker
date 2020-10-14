@@ -1,0 +1,19 @@
+
+{% extends 'nav.html' %}
+
+{% block content %}
+<div class="container">
+    
+    {% if hi %}
+        <h1>{{hi}}</h1>
+    
+    {% else %}
+    <form action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <input type="Submit" name="register" value="register">  
+        <input type="Submit" name="viewExpenses" value="viewExpenses">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}
