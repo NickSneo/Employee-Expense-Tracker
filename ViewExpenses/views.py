@@ -44,7 +44,29 @@ def trackByEmp(request):
 @login_required(login_url="/loginUser")
 def trackByTime(request):
     # Code to handle post request
-    return render(request, 'trackByTime.html')
+    today = pytz.utc.localize(
+        datetime.datetime.now() - datetime.timedelta(days=1))
+    week = pytz.utc.localize(
+        datetime.datetime.now() - datetime.timedelta(days=7))
+    month = pytz.utc.localize(
+        datetime.datetime.now() - datetime.timedelta(days=30))
+
+    print(today)
+    print(week)
+    print(month)
+    todayExpense = 0
+    weekExpense = 0
+    monthExpense = 0
+    all_expenses = Expenses.objects.all()
+    for exp in all_expenses:
+        if exp.Time >= today:
+            todayExpense += exp.Amount
+        if exp.Time >= week:
+            weekExpense += exp.Amount
+        if exp.Time >= month:
+            monthExpense += exp.Amount
+
+    return render(request, 'trackByTime.html', {"todayExpense": todayExpense, "weekExpense": weekExpense, "monthExpense": monthExpense})
 
 
 @login_required(login_url="/loginUser")
@@ -66,7 +88,7 @@ def trackByTag(request):
             if t.Time >= startdate:
                 if t.Tags == tag:
                     expenses.append(
-                        {'time': t.Time, 'id': t.EmpId.EmpId, 'amount': t.Amount})
+                        {'time': t.Time, 'id': t.EmpId.EmpId, 'amount': t.Amount, 'name': t.EmpId.EmpName})
                 tagExpense[t.Tags] = tagExpense.get(t.Tags, 0) + t.Amount
         if tag in tagExpense:
             total = tagExpense[tag]
@@ -80,4 +102,15 @@ def trackByTag(request):
 
 @login_required(login_url="/loginUser")
 def trackByDept(request):
-    return render(request, 'trackByDept.html')
+    dept_list = ['HR', 'Tech', 'Finance',
+                 'Marketing', 'Production', 'Stratergy']
+    all_expenses = Expenses.objects.all()
+    deptExpense = {}
+    startdate = pytz.utc.localize(
+        datetime.datetime.now() - datetime.timedelta(days=30))
+    for i in all_expenses:
+        if i.Time >= startdate:
+            empInfo = Employee.objects.get(EmpId=i.EmpId.EmpId)
+            deptExpense[empInfo.Dept] = deptExpense.get(
+                empInfo.Dept, 0) + i.Amount
+    return render(request, 'trackByDept.html', {'deptExpense': deptExpense})

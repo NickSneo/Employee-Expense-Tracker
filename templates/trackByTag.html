@@ -27,6 +27,7 @@
                     <tr>
                         <th> Amount </th>
                         <th> Id</th>
+                        <th> Name</th>
                         <th> Time</th>
                     </tr>
                     {% for e in expenses %}
@@ -36,6 +37,9 @@
                             </td>
                             <td>
                                 {{e.id}}
+                            </td>
+                            <td>
+                                {{e.name}}
                             </td>
                             <td>
                                 {{e.time}}
