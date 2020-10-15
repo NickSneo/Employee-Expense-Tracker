@@ -3,6 +3,51 @@
 {% block content %}
 <div class="container">
 
+    {% if not tags %}
+    <h1>No Employees in database, Please add some</h1>
+    {% else %}
+    <form action="{% url 'trackByTag' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="Tag">Select Tag or whatever</label>
+                <select name="Tag" id="Tag" class="form-control">
+                    <!-- <option selected>select from the dropdown</option> -->
+                    {% for t in tags %}
+                        <option>{{ t }}</option>
+                    {% endfor %}                    
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">View Expense</button>
+    </form>
+        {% if expenses %}
+        Tag is {{name}}
+        <table>
+            <tr>
+                <th> Amount </th>
+                <th> Id</th>
+                <th> Time</th>
+            </tr>
+            {% for e in expenses %}
+                <tr>
+                    <td>
+                        {{e.amount}}
+                    </td>
+                    <td>
+                        {{e.id}}
+                    </td>
+                    <td>
+                        {{e.time}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br/><br/>
+        Total is {{sum}}
+        {% endif %}
+    {% endif %}
+
 
 </div>
 

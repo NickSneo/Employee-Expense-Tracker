@@ -3,6 +3,52 @@
 {% block content %}
 <div class="container">
 
+    {% if not empIds %}
+    <h1>No Employees in database, Please add some</h1>
+    {% else %}
+    <form action="{% url 'trackByEmp' %}" method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="EmpId">Select Employee ID</label>
+                <select name="EmpId" id="EmpId" class="form-control">
+                    <!-- <option selected>select from the dropdown</option> -->
+                    {% for e in empIds %}
+                        <option>{{ e }}</option>
+                    {% endfor %}                    
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">View Expense</button>
+    </form>
+        {% if expenses %}
+        Employee is {{name}}
+        <table>
+            <tr>
+                <th> Amount </th>
+                <th> Tag</th>
+                <th> Time</th>
+            </tr>
+            {% for e in expenses %}
+                <tr>
+                    <td>
+                        {{e.amount}}
+                    </td>
+                    <td>
+                        {{e.tag}}
+                    </td>
+                    <td>
+                        {{e.time}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br/><br/>
+        Salary is {{salary}}<br/>
+        Other expenses is {{sum}}
+        {% endif %}
+    {% endif %}
+
 
 </div>
 
