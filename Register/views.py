@@ -29,15 +29,7 @@ def loginUser(request):
 
 @login_required(login_url="/loginUser")
 def home(request):
-    if request.method == 'POST':
-        if request.POST['action'] == 'registerEmp':
-            return redirect(registerEmp)
-        elif request.POST['action'] == 'inputExpense':
-            return redirect(inputExpense)
-        else:
-            return render(request, "viewExpenses.html")
-    else:
-        return render(request, "home.html")
+    return render(request, "home.html")
 
 
 @login_required(login_url="/loginUser")

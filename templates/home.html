@@ -2,19 +2,12 @@
 {% extends 'nav.html' %}
 
 {% block content %}
+
 <div class="container">
+    <a href="{% url 'registerEmp' %}"><button type="button" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 30px;">Register Employee</button></a>
+    <a href="{% url 'inputExpense' %}"><button type="button" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 30px;">Input Expense</button></a>
+    <a href="{% url 'viewExpenses' %}"><button type="button" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 30px;">Track Expense</button></a>
     
-    {% if hi %}
-        <h1>{{hi}}</h1>
-    
-    {% else %}
-    <form action="{% url 'home' %}" method="POST">
-        {% csrf_token %}
-        <input type="Submit" name="action" value="registerEmp"> 
-        <input type="Submit" name="action" value="inputExpense">
-        <input type="Submit" name="action" value="viewExpenses">
-    </form>
-    {% endif %}
 </div>
 
 {% endblock %}
