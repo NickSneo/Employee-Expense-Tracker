@@ -53,7 +53,7 @@ def trackByTime(request):
         fromDate = pytz.utc.localize(
             datetime.datetime.strptime(dateFrom, '%Y-%m-%d'))
         toDate = pytz.utc.localize(
-            datetime.datetime.strptime(dateTo, '%Y-%m-%d'))
+            datetime.datetime.strptime(dateTo, '%Y-%m-%d')+datetime.timedelta(days=1))
         # print("from", fromDate)
         # print("to", toDate)
         for exp in all_expenses:
