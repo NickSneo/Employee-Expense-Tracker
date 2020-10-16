@@ -21,34 +21,42 @@
         </div>
         <button type="submit" class="btn btn-primary">View Expense</button>
     </form>
+
         {% if expenses %}
-            Employee is {{name}}
-            <table>
-                <tr>
-                    <th> Amount </th>
-                    <th> Tag</th>
-                    <th> Time</th>
-                </tr>
-                {% for e in expenses %}
-                    <tr>
-                        <td>
-                            {{e.amount}}
-                        </td>
-                        <td>
-                            {{e.tag}}
-                        </td>
-                        <td>
-                            {{e.time}}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </table>
-            <br/><br/>
-            Salary is {{salary}}<br/>
-            Other expenses is {{total}}
-            <div class="row">
-                <div id="piechart"></div>
+        <center><h1>Expenditure on {{name}}</h1></center>
+        <center><h2>(Excluding salary of {{salary}})</h2></center>
+        <div class="row">
+            <div class="col-md-6">
+                <div style = "width:100%" id="piechart"></div>
             </div>
+            <div class="col-md-6 " style="height: 400px; overflow-y: scroll">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"> Amount </th>
+                            <th scope="col"> Tag</th>
+                            <th scope="col"> Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for e in expenses %}
+                        <tr>
+                            <td>
+                                {{e.amount}}
+                            </td>
+                            <td>
+                                {{e.tag}}
+                            </td>
+                            <td>
+                                {{e.time}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
         {% endif %}
     {% endif %}
     
@@ -69,7 +77,11 @@
         ]);
 
     // Optional; add a title and set the width and height of the chart
-    var options = { 'title': 'Total Expenses by Tag', 'width': 800, 'height': 600 };
+    var options = { 
+        'title': 'Total Expenditure: {{total}}', 
+        'is3D': true, 
+        legend:{position:'top',alignment:'start'},
+     };
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));

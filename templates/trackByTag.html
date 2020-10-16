@@ -22,14 +22,17 @@
             <button type="submit" class="btn btn-primary">View Expense</button>
         </form>
             {% if expenses %}
-                Tag is {{name}}
-                <table>
-                    <tr>
-                        <th> Amount </th>
-                        <th> Id</th>
-                        <th> Name</th>
-                        <th> Time</th>
-                    </tr>
+                <h1>Expenditure on {{name}}</h1>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col"> Amount </th>
+                            <th scope="col"> Id</th>
+                            <th scope="col"> Name</th>
+                            <th scope="col"> Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {% for e in expenses %}
                         <tr>
                             <td>
@@ -46,6 +49,7 @@
                             </td>
                         </tr>
                     {% endfor %}
+                    </tbody>
                 </table>
                 <br/><br/>
                 Total is {{sum}}
