@@ -1,19 +1,7 @@
 
-# Expenso
-Expenso is an expense-management software basically for Organisations. It will track your expenses, and give it a tabular as well as a graphical view so that you need to know where to tighten up.
+# Employee Expense Tracker - Expenso
+Expenso is an expense-management software basically for Organisations(companies). It will track your expenses, and give it a tabular as well as a graphical view so that you need to know where to tighten up.
 
- 
-
-It contains two web-apps:
-
--   Register
-   
--   Input Expense
-   
--   ViewExpenses
-   
-
- 
  
 
 **Register** fulfills the following functionalities:
@@ -107,47 +95,52 @@ It contains two web-apps:
 
 # Installation
 
--   Clone the repository.
-   
+To run the app locally follow the below steps :
 
-  **TODO: Add deployment link**
+- Clone the repository.
 
- 
+```
+git clone https://github.com/NickSneo/Employee-Expense-Tracker.git
+```
 
--   Run the following command -
-   
+- Run the following command -
 
-  **TODO: Requirements.txt**
+```
+pip install -r requirements.txt
+```
 
-![](https://lh3.googleusercontent.com/3iMyf-b6GbiAAbPB3pqauIxNUpPHFYn1c_UpZ-0AhewDG8GUeJW6FXxxGItVKFBjupB5NOfu7i7YsJuiMjsyX3zCDdlwvPa6m4JfELuQTAUel6NpCDnJ1Bpk0F4Hk6piSFicGADp)
+- Make `migrations` to the database.
 
- 
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+- To Generate a `secret key` for django app, Go to this website [here](https://djecrety.ir/)
 
--   Make migrations to the database.
-   
+- Click on Generate Button
+- And Copy this Generated Secret Key
+- Paste this Key in `SECRET_KEY` in `settings.py` file.
 
- 
+```
+SECRET_KEY = Your_Generated_SECRET_KEY
+```
+- Now create a super user to use and login into the app
+- Remember your username and password, using which you will login
 
-![](https://lh4.googleusercontent.com/Vh1H03_TiqqYdClU6Ko6ZOI86aoroc_JYVjPenACvtgXX0rkQj1B0qBD6D2tm1gObOr8GV2FDS6chH5bH-Mf_GYRcrrU8_z88qJbeGy0Y4ihiNzdvSGsNPM7t6GVPSQfFxGCRmaV)
+```
+python manage.py createsuperuser
+```
 
- 
 
-# Starting the Project
+## Starting the Project
 
- 
+- Start the project using -
 
--   Start the project using -
-   
+```
+python manage.py runserver
+```
 
- 
-
-![](https://lh5.googleusercontent.com/EEI9alJXFjtgkPYlQ8aM2rUWe9fwPdT0TbUe9eELgtJMfztC3ymtwNadHJw13boygwJ4-Qg3HHngw30-TYMyMGIHImGwNC6ah6MLVDbRY_JHGeyR5p89cQ5tSXWu_BPW9n2Fd0np)
-
- 
-
--   Browse to ____________________ to see you web app.
-   
-
+- Browse to http://127.0.0.1:8000/ to see your web app.
  
  
 
@@ -190,9 +183,7 @@ It contains two web-apps:
 -   After starting the server, the landing page will ask you to Login Through Given Id and Password.
    
 -   You won’t be able to access anything before Login in the Login Page
-   
--   After clicking on Login In button, you will be redirected to the login page to authenticate your ID and Password.
-   
+      
 -   On the Home Page, You will see three options Register, InputExpenses, and View Expenses.
    
 -   In Register you will be asked to add details of the new Employee.
@@ -208,9 +199,7 @@ It contains two web-apps:
 -   In View Expense you can track down the expense based on time,tags,department and per employee 
    
 -   After logging out, the user will be redirected to the login page.
-   
--   Data Structures used- List for storing various expenses details of the employee also for various tags and departments so that they can be searched accordingly.
-   
+     
 
 
 
@@ -257,4 +246,9 @@ It contains two web-apps:
 **3. Dataflow Diagram**
 
 **[![](https://lh4.googleusercontent.com/cmP9yxBILkN84GTC8tVB-DulbvpbDb0-mdZha2_LOktunrZqe1HbVJSOhL3BslSYsQ4NGqVGaXrypWDwFmde7kUAdo2XFysMLSe1dHdMeiMVbntM4SkwBjd2kpV6AxHI7niWEVBR)](https://app.lucidchart.com/documents/edit/6b5d915f-2f39-45a0-85f0-ca56a3c44647/0?callback=close&name=docs&callback_type=back&v=890&s=612)**
+
+# Contact Me
+
+You can contact me at <17ucc040@lnmiit.ac.in> and  <nischal.1106@gmail.com>
+
 
