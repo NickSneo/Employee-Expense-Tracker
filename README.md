@@ -195,33 +195,17 @@ It contains two web-apps:
    
 -   On the Home Page, You will see three options Register, InputExpenses, and View Expenses.
    
--   If the employee you want to look for is new first get him registered in the Register.
+-   In Register you will be asked to add details of the new Employee.
    
--   The employee details are then stored in the Employee database implemented using sqlite3.
+-   The employee details are then stored in the **Employee** database implemented using sqlite3.
    
--   Also, all the URLs are stored in the urls database.
+-   In Input Expense you will be asked to add details of the expenses on te employee based on particular tag.  
    
--   If the employee is registered but you want to add the expense you did on that particular employee you can go to InputExpense and add it there
-   
--   Employee expenditure in the various tags(Allowance, Insurance, etc) is stored in other database Expense.
-   
--   If you wanna track down the expense Click on ViewExpense:
-   
-
--   Click on the Track By Time if you want to track the total expense daily, weekly, or monthly.
-   
--   Click on the Track By Tag if you want to track the total expense for various other expenses(Allowance, Insurance, etc) monthly.
-   
--   Click on the Track By Department if you want to track the total expense of various departments monthly.
-   
--   Click on the Track Per Employee if you want to track the total expense on a particular employee monthly.
-   
-
- 
+-   Input Expense in the various tags(Allowance, Insurance, etc) is stored in other database **Expense**.
 
 -   After storing the user’s database we extract those data when we use our ViewExpense.
    
--   Here we extract data like the EmpId, tags, department, etc to meet the demands of the various ViewExpanses functions.
+-   In View Expense you can track down the expense based on time,tags,department and per employee 
    
 -   After logging out, the user will be redirected to the login page.
    
@@ -243,16 +227,21 @@ It contains two web-apps:
 
 **Home Page**
 
--   The home page containing three navbars - Registration, InputExpense, ViewExpense.
+-   The home page containing three buttons - Registration, InputExpense, ViewExpense.
    
 
- 
+**Regster** 
 
 -   The Registration has a small detail form for the new Employee.
+
+**Input Expense**
    
 -   The Input Expense has a small detail form about the tag in which the expense for the particular employee is made.
+
+**View Expense**
    
 -   The View Expense has further four dropdown cards, Track by time, Track by tag, Track by department, Track per Employee.
+
 
 # Software Workflow and DataFlow
 
