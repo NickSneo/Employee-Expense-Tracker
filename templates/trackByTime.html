@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <form action="{% url 'trackByTime' %}">
+        <form action="{% url 'trackByTime' %}" method="POST">
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group">
@@ -15,19 +15,20 @@
                     <input type="date" id="dateTo" name="dateTo" />
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-    <!-- {% if total != 0 %} -->
-    <div class="row">
-            <h1>Today's Expense : {{ todayExpense }}</h1>
-    </div>
-    <div class="row">
-            <h1>This week's Expense : {{ weekExpense }}</h1>
-    </div>
-    <div class="row">
-            <h1>This month's Expense : {{ monthExpense }}</h1>
-    </div>
-    <!-- {% endif %} -->
+    {% if total != 0 %}
+        <div class="row">
+                <h1>Total Expenses from {{ dateFrom }} to {{ dateTo }}: {{ total }}</h1>
+        </div>
+        {% for exp in expenses %}
+        <div class="row">
+            name = {{ exp.name }}<span> id = {{ exp.id }}</span> <span> amount = {{ exp.amount }}</span>
+        </div>
+        {% endfor %}
+        
+    {% endif %}
 
 
 </div>

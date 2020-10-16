@@ -43,30 +43,29 @@ def trackByEmp(request):
 
 @login_required(login_url="/loginUser")
 def trackByTime(request):
-    # Code to handle post request
-    today = pytz.utc.localize(
-        datetime.datetime.now() - datetime.timedelta(days=1))
-    week = pytz.utc.localize(
-        datetime.datetime.now() - datetime.timedelta(days=7))
-    month = pytz.utc.localize(
-        datetime.datetime.now() - datetime.timedelta(days=30))
+    total = 0
+    if request.method == 'POST':
+        dateFrom = request.POST['dateFrom']
+        dateTo = request.POST['dateTo']
 
-    print(today)
-    print(week)
-    print(month)
-    todayExpense = 0
-    weekExpense = 0
-    monthExpense = 0
-    all_expenses = Expenses.objects.all()
-    for exp in all_expenses:
-        if exp.Time >= today:
-            todayExpense += exp.Amount
-        if exp.Time >= week:
-            weekExpense += exp.Amount
-        if exp.Time >= month:
-            monthExpense += exp.Amount
+        expenses = []
+        all_expenses = Expenses.objects.all()
+        fromDate = pytz.utc.localize(
+            datetime.datetime.strptime(dateFrom, '%Y-%m-%d'))
+        toDate = pytz.utc.localize(
+            datetime.datetime.strptime(dateTo, '%Y-%m-%d'))
+        # print("from", fromDate)
+        # print("to", toDate)
+        for exp in all_expenses:
+            # print(exp.Time)
+            if exp.Time >= fromDate and exp.Time <= toDate:
+                total += exp.Amount
+                expenses.append({'time': exp.Time, 'id': exp.EmpId.EmpId,
+                                 'amount': exp.Amount, 'name': exp.EmpId.EmpName, 'tag': exp.Tags})
 
-    return render(request, 'trackByTime.html', {"todayExpense": todayExpense, "weekExpense": weekExpense, "monthExpense": monthExpense})
+        return render(request, 'trackByTime.html', {"total": total, "expenses": expenses, "dateFrom": dateFrom, "dateTo": dateTo})
+    else:
+        return render(request, 'trackByTime.html', {"total": total})
 
 
 @login_required(login_url="/loginUser")
@@ -111,7 +110,8 @@ def trackByDept(request):
     for i in all_expenses:
         if i.Time >= startdate:
             empInfo = Employee.objects.get(EmpId=i.EmpId.EmpId)
-            deptExpense[empInfo.Dept] = deptExpense.get(empInfo.Dept, 0) + i.Amount
+            deptExpense[empInfo.Dept] = deptExpense.get(
+                empInfo.Dept, 0) + i.Amount
 
     if request.method == 'POST':
         expenses = []
@@ -121,7 +121,8 @@ def trackByDept(request):
                 if i.EmpId.Dept == dept:
                     expenses.append(
                         {'time': i.Time, 'id': i.EmpId.EmpId, 'amount': i.Amount, 'name': i.EmpId.EmpName})
-                deptExpense[i.EmpId.Dept] = deptExpense.get(i.EmpId.Dept, 0) + i.Amount
+                deptExpense[i.EmpId.Dept] = deptExpense.get(
+                    i.EmpId.Dept, 0) + i.Amount
         if dept in deptExpense:
             total = deptExpense[dept]
         else:
@@ -129,7 +130,4 @@ def trackByDept(request):
 
         return render(request, 'trackByDept.html', {"depts": dept_list, "expenses": expenses, "sum": total, "name": dept, "deptExpense": deptExpense})
     else:
-        return render(request, 'trackByDept.html', {'depts':dept_list,'deptExpense': deptExpense})
-
-
-
+        return render(request, 'trackByDept.html', {'depts': dept_list, 'deptExpense': deptExpense})
