@@ -19,14 +19,31 @@
         </form>
     </div>
     {% if total != 0 %}
+        <center><h1>Total Expenditure = {{ total }}</h1></center>
+        <center><h2>(Calculated from {{ dateFrom }} to {{ dateTo }})</h2></center>
+                 
         <div class="row">
-                <h1>Total Expenses from {{ dateFrom }} to {{ dateTo }}: {{ total }}</h1>
+            <table class="table">
+                <thead class= "thead-dark">
+                    <tr>
+                        <th scope="col"> Name </th>
+                        <th scope="col"> Id</th>
+                        <th scope="col"> Amount</th>
+                        <th scope="col"> Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in expenses %}
+                    <tr>
+                        <td>{{e.name}}</td>
+                        <td>{{e.id}}</td>
+                        <td>{{e.amount}}</td>
+                        <td>{{e.time}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-        {% for exp in expenses %}
-        <div class="row">
-            name = {{ exp.name }}<span> id = {{ exp.id }}</span> <span> amount = {{ exp.amount }}</span>
-        </div>
-        {% endfor %}
         
     {% endif %}
 
