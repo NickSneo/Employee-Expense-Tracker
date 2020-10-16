@@ -2,16 +2,40 @@
 
 {% block content %}
 <div class="container">
-<div class="row">
-    <h1>Today's Expense : {{ todayExpense }}</h1>
-</div>
-<div class="row">
-    <h1>This week's Expense : {{ weekExpense }}</h1>
-</div>
-<div class="row">
-    <h1>This month's Expense : {{ monthExpense }}</h1>
-</div>
+    <div class="row">
+        <form action="{% url 'trackByTime' %}">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dateFrom">From Date</label>
+                    <input type="date" id="dateFrom" name="dateFrom" />
+                </div>
+                <div class="form-group">
+                    <label for="dateTo">To Date</label>
+                    <input type="date" id="dateTo" name="dateTo" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- {% if total != 0 %} -->
+    <div class="row">
+            <h1>Today's Expense : {{ todayExpense }}</h1>
+    </div>
+    <div class="row">
+            <h1>This week's Expense : {{ weekExpense }}</h1>
+    </div>
+    <div class="row">
+            <h1>This month's Expense : {{ monthExpense }}</h1>
+    </div>
+    <!-- {% endif %} -->
+
 
 </div>
+<script>
+    dateFrom.max = new Date().toISOString().split("T")[0];
+    dateFrom.value = new Date().toISOString().split("T")[0];
+    dateTo.max = new Date().toISOString().split("T")[0];
+    dateTo.value = new Date().toISOString().split("T")[0];
+</script>
 
 {% endblock %}
