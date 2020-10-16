@@ -111,6 +111,25 @@ def trackByDept(request):
     for i in all_expenses:
         if i.Time >= startdate:
             empInfo = Employee.objects.get(EmpId=i.EmpId.EmpId)
-            deptExpense[empInfo.Dept] = deptExpense.get(
-                empInfo.Dept, 0) + i.Amount
-    return render(request, 'trackByDept.html', {'deptExpense': deptExpense})
+            deptExpense[empInfo.Dept] = deptExpense.get(empInfo.Dept, 0) + i.Amount
+
+    if request.method == 'POST':
+        expenses = []
+        dept = request.POST['Dept']
+        for i in all_expenses:
+            if i.Time >= startdate:
+                if i.EmpId.Dept == dept:
+                    expenses.append(
+                        {'time': i.Time, 'id': i.EmpId.EmpId, 'amount': i.Amount, 'name': i.EmpId.EmpName})
+                deptExpense[i.EmpId.Dept] = deptExpense.get(i.EmpId.Dept, 0) + i.Amount
+        if dept in deptExpense:
+            total = deptExpense[dept]
+        else:
+            total = 0
+
+        return render(request, 'trackByDept.html', {"depts": dept_list, "expenses": expenses, "sum": total, "name": dept, "deptExpense": deptExpense})
+    else:
+        return render(request, 'trackByDept.html', {'depts':dept_list,'deptExpense': deptExpense})
+
+
+

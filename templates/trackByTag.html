@@ -1,16 +1,16 @@
 {% extends 'nav.html' %}
 
 {% block content %}
-<div class="container">
 
+<div class="container">
     {% if not tags %}
-        <h1>No Employees in database, Please add some</h1>
+        <h1>No Tags in database, Please add some</h1>
     {% else %}
         <form action="{% url 'trackByTag' %}" method="POST">
             {% csrf_token %}
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label for="Tag">Select Tag or whatever</label>
+                    <label for="Tag">Select Tag</label>
                     <select name="Tag" id="Tag" class="form-control">
                         <!-- <option selected>select from the dropdown</option> -->
                         {% for t in tags %}

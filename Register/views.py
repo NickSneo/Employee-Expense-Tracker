@@ -57,7 +57,7 @@ def registerEmp(request):
 @login_required(login_url="/loginUser")
 def inputExpense(request):
     if request.method == 'POST':
-        EmpId = request.POST['EmpId']
+        EmpId = request.POST['EmpId'].split(' - ')[0]
         Tag = request.POST['Tag']
         Amt = request.POST['Amt']
         # print(EmpId, EmpName, Dept, Salary)

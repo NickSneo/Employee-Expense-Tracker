@@ -3,16 +3,65 @@
 {% block content %}
 
 <div class="container">
-    {% if deptExpense|length %}
-        <div class="row">
-            <div id="piechart"></div>
-        </div>
+    {% if not depts %}
+        <h1>No departments in database, Please add some</h1>
     {% else %}
-        <div class="row">
-            <h1>No data found, please add some expenses</h1>
-        </div>
+        <form action="{% url 'trackByDept' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="Dept">Select Department</label>
+                    <select name="Dept" id="Dept" class="form-control">
+                        <!-- <option selected>select from the dropdown</option> -->
+                        {% for d in depts %}
+                            <option>{{ d }}</option>
+                        {% endfor %}                    
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">View Expense</button>
+        </form>
+            {% if expenses %}
+                <center><h1>{{name}} Expenditure</h1></center>      
+                <div class="row">
+                    <div class="col-md-6 " style="height: 400px; overflow-y: scroll">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col"> Amount </th>
+                                    <th scope="col"> Id</th>
+                                    <th scope="col"> Name</th>
+                                    <th scope="col"> Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for e in expenses %}
+                                <tr>
+                                    <td>
+                                        {{e.amount}}
+                                    </td>
+                                    <td>
+                                        {{e.id}}
+                                    </td>
+                                    <td>
+                                        {{e.name}}
+                                    </td>
+                                    <td>
+                                        {{e.time}}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6 overflow-auto">
+                        <div id="piechart"></div>
+                    </div>
+            </div>
+            {% else %}
+             <div id="piechart"></div>
+            {% endif %}
     {% endif %}
-    
     
 </div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -31,7 +80,12 @@
             ]);
 
         // Optional; add a title and set the width and height of the chart
-        var options = { 'title': 'Total Expenses by Department', 'width': 800, 'height': 600 };
+         var options = { 
+            'title': 'Total Expenditure: {{sum}}', 
+            'is3D': true, 
+            //legend:{position:'top'},
+            chartArea: {height:'auto',width:'auto'}
+         };
 
         // Display the chart inside the <div> element with id="piechart"
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
