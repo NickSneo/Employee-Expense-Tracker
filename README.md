@@ -1,3 +1,4 @@
+
 # Expenso
 Expenso is an expense-management software basically for Organisations. It will track your expenses, and give it a tabular as well as a graphical view so that you need to know where to tighten up.
 
@@ -252,3 +253,19 @@ It contains two web-apps:
 -   The Input Expense has a small detail form about the tag in which the expense for the particular employee is made.
    
 -   The View Expense has further four dropdown cards, Track by time, Track by tag, Track by department, Track per Employee.
+
+# Software Workflow and DataFlow
+
+**1. Realtional Schema**
+
+
+**![](https://lh5.googleusercontent.com/PSAQC3xXc8M4FERXitqQqgsi4f7b5RRR1pw9bVcCwGyPfHgZqAOIZ2XXjrusAmjM9Luu7WgNxEpjoaXjJz4Xk3XAtEC8uFuQT2v31BEoMqj1ir3t0m-D8yZXFKBCfOI0B2gGSNOu)**
+
+**2. ER Diagram**
+
+**![](https://lh4.googleusercontent.com/NT5oOHQ5f-RQFIMXkJpuutHk60daVRpQTveus-_qfsJXkvQgYZ2sJCpfHXTeldmUo0MvCkURDuM2S9lIY9rRndQnit3HlbBUpdsLjQPn_HOya5kOoZ2cNtW7vvgTWKa_9a_NcOJr)**
+
+**3. Dataflow Diagram**
+
+**[![](https://lh4.googleusercontent.com/cmP9yxBILkN84GTC8tVB-DulbvpbDb0-mdZha2_LOktunrZqe1HbVJSOhL3BslSYsQ4NGqVGaXrypWDwFmde7kUAdo2XFysMLSe1dHdMeiMVbntM4SkwBjd2kpV6AxHI7niWEVBR)](https://app.lucidchart.com/documents/edit/6b5d915f-2f39-45a0-85f0-ca56a3c44647/0?callback=close&name=docs&callback_type=back&v=890&s=612)**
+
