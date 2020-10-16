@@ -1,99 +1,80 @@
-
 # Employee Expense Tracker - Expenso
+
 Expenso is an expense-management software basically for Organisations(companies). It will track your expenses, and give it a tabular as well as a graphical view so that you need to know where to tighten up.
 
--   This web apps are deployed on - https://expenso-tracker.herokuapp.com/
--   To Login - 
-``` 
+- This web apps are deployed on - https://expenso-tracker.herokuapp.com/
+- To Login -
+
+```
 username = test
 password = test@123
 ```
 
 **Register** fulfills the following functionalities:
 
--   Let the user login(Authenticate) with their given Id and Password.
-   
--   After Authenticating, it allows you to Register the details of your new Employee
-   
+- Let the user login(Authenticate) with their given Id and Password.
 
- 
+- After Authenticating, it allows you to Register the details of your new Employee
 
 **InputExpense** fulfills the following functionalities:
 
--   It allows you to add other expenses on various sections like Insurance, Allowance, many more that you did on a particular employee on daily basis.
-   
-
- 
+- It allows you to add other expenses on various sections like Insurance, Allowance, many more that you did on a particular employee on daily basis.
 
 **ViewExpenses** fulfills the following functionalities:
 
--   It allows you to track down the expenses: daily, weekly, and monthly.
-   
--   It allows you to track down the expenses of the company in various sectors like allowances, insurance, and many more.
-   
--   It allows you to track down the expenses made on particular departments like Technical, Finance, and many more.
-   
--   It also shows the expenditure on each employee for the entire month.
-   
+- It allows you to track down the expenses: daily, weekly, and monthly.
 
+- It allows you to track down the expenses of the company in various sectors like allowances, insurance, and many more.
 
+- It allows you to track down the expenses made on particular departments like Technical, Finance, and many more.
+
+- It also shows the expenditure on each employee for the entire month.
 
 # Extra Features
 
--   Beautiful Pie Chart for better visualization.
-   
--   Complete tabular data of the entire month on the employee, each sector and each department.
-   
--   Clean and Clutter-free UI.
-   
+- Beautiful Pie Chart for better visualization.
 
- 
- 
+- Complete tabular data of the entire month on the employee, each sector and each department.
+
+- Clean and Clutter-free UI.
 
 # Deployment
 
--   This web apps are deployed on - https://expenso-tracker.herokuapp.com/
--   To Login - 
-``` 
+- This web apps are deployed on - https://expenso-tracker.herokuapp.com/
+- To Login -
+
+```
 username = test
 password = test@123
 ```
- 
- 
 
 # Table Of Contents
 
 1.  Pre-Requisites
-   
-2.  Setup and Installation.
-   
-3.  Starting the Project.
-   
-4.  Tech Stack Used
-   
-5.  Features and Implementation.
-   
-6.  Software Designs and Dataflow.
-   
-7.  Working with the app
-   
-8.  Working Demo.
-   
-9.  Contact Us.
-   
 
- 
+2.  Setup and Installation.
+
+3.  Starting the Project.
+
+4.  Tech Stack Used
+
+5.  Features and Implementation.
+
+6.  Software Designs and Dataflow.
+
+7.  Working with the app
+
+8.  Working Demo.
+
+9.  Contact Us.
 
 # Pre-Requisites
 
--   Django Framework Should be Installed on your system.
-   
--   Python v3.8(or above) should be installed on your system.
-   
--   PIP Packages should be installed on your system.
-   
+- Django Framework Should be Installed on your system.
 
- 
+- Python v3.8(or above) should be installed on your system.
+
+- PIP Packages should be installed on your system.
 
 # Installation
 
@@ -117,6 +98,7 @@ pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 ```
+
 - To Generate a `secret key` for django app, Go to this website [here](https://djecrety.ir/)
 
 - Click on Generate Button
@@ -126,13 +108,13 @@ python manage.py migrate
 ```
 SECRET_KEY = Your_Generated_SECRET_KEY
 ```
+
 - Now create a super user to use and login into the app
 - Remember your username and password, using which you will login
 
 ```
 python manage.py createsuperuser
 ```
-
 
 ## Starting the Project
 
@@ -143,101 +125,97 @@ python manage.py runserver
 ```
 
 - Browse to http://127.0.0.1:8000/ to see your web app.
- 
- 
 
 # Tech Stack Used
 
- 
-
 **Frontend**
 
--   HTML
-   
--   CSS
-   
--   Javascript
-   
--   Bootstrap
-   
+- HTML
 
- 
+- CSS
+
+- Javascript
+
+- Bootstrap
 
 **Backend**
 
--   Django
-   
--   Python 3.8
-   
+- Django
+
+- Python 3.8
 
 **Database**
 
--   Sqlite3
-   
-
- 
- 
+- Sqlite3
 
 # Fetaures and Implemention
 
- 
+- After starting the server, the landing page will ask you to Login Through Given Id and Password.
 
--   After starting the server, the landing page will ask you to Login Through Given Id and Password.
-   
--   You won’t be able to access anything before Login in the Login Page
-      
--   On the Home Page, You will see three options Register, InputExpenses, and View Expenses.
-   
--   In Register you will be asked to add details of the new Employee.
-   
--   The employee details are then stored in the **Employee** database implemented using sqlite3.
-   
--   In Input Expense you will be asked to add details of the expenses on te employee based on particular tag.  
-   
--   Input Expense in the various tags(Allowance, Insurance, etc) is stored in other database **Expense**.
+- You won’t be able to access anything before Login in the Login Page
+- On the Home Page, You will see three options Register, InputExpenses, and View Expenses.
 
--   After storing the user’s database we extract those data when we use our ViewExpense.
-   
--   In View Expense you can track down the expense based on time,tags,department and per employee 
-   
--   After logging out, the user will be redirected to the login page.
-     
+- In Register you will be asked to add details of the new Employee.
 
+- The employee details are then stored in the **Employee** database implemented using sqlite3.
 
+- In Input Expense you will be asked to add details of the expenses on te employee based on particular tag.
+
+- Input Expense in the various tags(Allowance, Insurance, etc) is stored in other database **Expense**.
+
+- After storing the user’s database we extract those data when we use our ViewExpense.
+
+- In View Expense you can track down the expense based on time,tags,department and per employee
+
+- After logging out, the user will be redirected to the login page.
 
 # Working with the App
 
- 
-
 **Login Page**
 
--   Clicking on the Login with the login button will take you to the Login page.
-   
+- Clicking on the Login with the login button will take you to the Login page.
 
- 
+![Login Page](images/login.png "Login Page")
 
 **Home Page**
 
--   The home page containing three buttons - Registration, InputExpense, ViewExpense.
-   
+- The home page containing three buttons - Registration, InputExpense, ViewExpense.
 
-**Regster** 
+![Home Page](images/home.png "Home Page")
 
--   The Registration has a small detail form for the new Employee.
+**Regster**
+
+- The Registration has a small detail form for the new Employee.
+
+![Register Page](images/register.png "Register Page")
 
 **Input Expense**
-   
--   The Input Expense has a small detail form about the tag in which the expense for the particular employee is made.
+
+- The Input Expense has a small detail form about the tag in which the expense for the particular employee is made.
+
+![Input Expense Page](images/inputExpenses.png "Input Expense Page")
 
 **View Expense**
-   
--   The View Expense has further four dropdown cards, Track by time, Track by tag, Track by department, Track per Employee.
 
+- The View Expense has further four dropdown cards, Track by time, Track by tag, Track by department, Track per Employee.
+
+![View Expense Page](images/viewExpenses.png "View Expense Page")
+
+![trackByTime Page](images/trackByTime.png "trackByTime Page")
+
+![trackByTag Page 1](images/trackByTag1.png "trackByTag Page 1")
+
+![trackByTag Page 2](images/trackByTag2.png "trackByTag Page 2")
+
+![trackByDept Page 1](images/trackByDept1.png "trackByDept Page 1")
+
+![trackByDept Page 2](images/trackByDept2.png "trackByDept Page 2")
+
+![track by employee Page](images/trackByEmp.png "track by employee Page 1")
 
 # Software Workflow and DataFlow
 
 **1. Realtional Schema**
-
 
 **![](https://lh5.googleusercontent.com/PSAQC3xXc8M4FERXitqQqgsi4f7b5RRR1pw9bVcCwGyPfHgZqAOIZ2XXjrusAmjM9Luu7WgNxEpjoaXjJz4Xk3XAtEC8uFuQT2v31BEoMqj1ir3t0m-D8yZXFKBCfOI0B2gGSNOu)**
 
@@ -251,6 +229,4 @@ python manage.py runserver
 
 # Contact Me
 
-You can contact me at <17ucc040@lnmiit.ac.in> and  <nischal.1106@gmail.com>
-
-
+You can contact me at <17ucc040@lnmiit.ac.in> and <nischal.1106@gmail.com>
