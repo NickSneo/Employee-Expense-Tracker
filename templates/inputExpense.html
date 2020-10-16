@@ -11,11 +11,11 @@
         {% csrf_token %}
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="EmpId">Select Employee ID</label>
+                <label for="EmpId">Select Employee</label>
                 <select name="EmpId" id="EmpId" class="form-control">
                     <!-- <option selected>select from the dropdown</option> -->
-                    {% for e in empIds %}
-                        <option>{{ e }}</option>
+                    {% for k,v in empIds.items %}
+                        <option>{{ k }} - {{ v }}</option>
                     {% endfor %}                    
                 </select>
             </div>

@@ -56,9 +56,7 @@ def registerEmp(request):
 
 @login_required(login_url="/loginUser")
 def inputExpense(request):
-    print("reched")
     if request.method == 'POST':
-        print("inside")
         EmpId = request.POST['EmpId']
         Tag = request.POST['Tag']
         Amt = request.POST['Amt']
@@ -74,11 +72,10 @@ def inputExpense(request):
             return redirect("/")
 
     employees = Employee.objects.filter()
-    print(employees)
-    empIds = []
+    empIds = {}
     for e in employees:
-        empIds.append(e.EmpId)
-    print(empIds)
+        empIds[e.EmpId] = e.EmpName
+    # print(empIds)
     return render(request, "inputExpense.html", {"empIds": empIds})
 
 
