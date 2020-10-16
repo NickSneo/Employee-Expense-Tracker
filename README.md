@@ -2,7 +2,12 @@
 # Employee Expense Tracker - Expenso
 Expenso is an expense-management software basically for Organisations(companies). It will track your expenses, and give it a tabular as well as a graphical view so that you need to know where to tighten up.
 
- 
+-   This web apps are deployed on - https://expenso-tracker.herokuapp.com/
+-   To Login - 
+``` 
+username = test
+password = test@123
+```
 
 **Register** fulfills the following functionalities:
 
