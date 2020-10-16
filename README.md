@@ -47,15 +47,12 @@ Expenso is an expense-management software basically for Organisations(companies)
 
 # Deployment
 
--   This web apps are deployed on
-   
-
- 
- 
- 
- 
- 
- 
+-   This web apps are deployed on - https://expenso-tracker.herokuapp.com/
+-   To Login - 
+``` 
+username = test
+password = test@123
+```
  
  
 
