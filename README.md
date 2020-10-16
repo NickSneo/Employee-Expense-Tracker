@@ -183,7 +183,7 @@ python manage.py runserver
 
 ![Home Page](images/home.png "Home Page")
 
-**Regster**
+**Register**
 
 - The Registration has a small detail form for the new Employee.
 
@@ -193,13 +193,13 @@ python manage.py runserver
 
 - The Input Expense has a small detail form about the tag in which the expense for the particular employee is made.
 
-![Input Expense Page](images/inputExpenses.png "Input Expense Page")
+![Input Expense Page](images/inputExpense.png "Input Expense Page")
 
 **View Expense**
 
 - The View Expense has further four dropdown cards, Track by time, Track by tag, Track by department, Track per Employee.
 
-![View Expense Page](images/viewExpenses.png "View Expense Page")
+![View Expense Page](images/viewExpense.png "View Expense Page")
 
 ![trackByTime Page](images/trackByTime.png "trackByTime Page")
 
