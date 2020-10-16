@@ -26,7 +26,7 @@
         <center><h1>Expenditure on {{name}}</h1></center>
         <center><h2>(Excluding salary of {{salary}})</h2></center>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 overflow-auto">
                 <div style = "width:100%" id="piechart"></div>
             </div>
             <div class="col-md-6 " style="height: 400px; overflow-y: scroll">
@@ -80,7 +80,8 @@
     var options = { 
         'title': 'Total Expenditure: {{total}}', 
         'is3D': true, 
-        legend:{position:'top',alignment:'start'},
+        legend:{position:'top'},
+        chartArea: {height:'auto',width:'auto'}
      };
 
     // Display the chart inside the <div> element with id="piechart"
